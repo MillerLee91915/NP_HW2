@@ -167,7 +167,15 @@ void *connect_controler(void *arg)
                 send(connect_fd[gamestatus[socket_id]], "Tie\n", strlen("Tie\n"), 0);
             }
         }
+        else
+        {
+            memset(user_list[socket_id], '\0', sizeof(user_list[socket_id]));
+            gamestatus[socket_id] = -1;
+            connect_fd[socket_id] = -1;
+        }
     }
+
+
 }
 
 int main(int argc, char *argv[])
